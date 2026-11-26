@@ -1,0 +1,19 @@
+/* Excerpt from src/trade/Ticket.css. Below 1024px the ticket becomes a bar at the bottom that opens as a sheet.
+   Every value is a token role, never a hex color. */
+
+.ticket-bar { display: none; }
+@media (max-width: 1023px) {
+  .ticket-card { display: none; }
+  .ticket-bar {
+    position: fixed; z-index: 55; left: 12px; right: 12px; bottom: 12px;
+    display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 12px;
+    border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--line-2); text-align: left;
+    animation: toast-in 260ms var(--ease) both;
+  }
+  .ticket-bar > span:nth-child(2) { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+  .ticket-bar small { font-size: var(--fs-xs); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ticket-bar b { font-size: var(--fs-sm); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+@media (max-width: 767px) {
+  .ticket-bar { bottom: calc(70px + env(safe-area-inset-bottom)); }
+}
